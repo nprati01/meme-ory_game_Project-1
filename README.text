@@ -1,0 +1,34 @@
+1) Define required Constants:
+    1.1)Define a selection object that will be empty until the user has selected two cards
+    1.2)
+
+2) Define Required variables used to track the state of the game
+    2.1) Use a board array to represent the cards
+    2.2) Use a Guess variable to represent the number of guesses the player has
+    2.3) Use a winner variable to represent a player that wins or loses
+
+
+3) Store elements on the page that will be accessed in the code more than once
+    3.1)
+
+4) Upon loading the app should:
+    4.1)Initialize the state variables:
+        4.1.1)Initialize the board
+            upon intialization the board should diplay the cards shuffling across the board
+            the board should have 16 squares that act as cards
+            each card will have 2 sides, one side will have the name of the game on it and the other side will have an image
+    4.1.2) Intialize the number of guesses the player has
+        the player will have 18 guesses
+    4.1.3) Intialize winner
+        -the player will win or lose based on their ability to guess all of the matches in the alloted amount of guesses
+        -if they do not get the matches correct
+
+    4.2)
+
+5) Handle a player clicking a card
+5.1) the card should flip over when clicked
+5.1.2) the player should not be able to select more than two cards a turn
+5.1.3) if the two cards clicked match the cards remain clicked
+5.1.4) if the two cards clicked do not match the cards flip over
+5.1.5) after two cards have been clicked the number of guesses remianing is decreased by 1
+

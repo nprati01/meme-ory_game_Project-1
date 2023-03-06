@@ -1,0 +1,33 @@
+h1{
+    color: blue;
+}
+h2{
+    text-align: end;
+    background-color blue;
+    border-color:red;
+    padding:20px
+    margin: 20px;
+
+}
+#start-game{
+    background-color: blue;
+    color: white;
+
+}
+#board{
+    display: grid;
+    grid-template-columns:repeat(4, 30vmin);
+    grid-template-rows: repeat(4, 20vmin);
+    background-color: blue;
+    border-style: dashed;
+    border-radius: 5vmin;
+    border-color:white;
+
+}
+#board > * {
+    border-style: solid;
+    border-color: white;
+    border-radius: 2vmin;
+    background-color: green;
+    border-width: 5px;
+}
