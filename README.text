@@ -32,3 +32,30 @@
 5.1.4) if the two cards clicked do not match the cards flip over
 5.1.5) after two cards have been clicked the number of guesses remianing is decreased by 1
 
+----code for use
+const cardObjects = [
+    {id:1 imagePath:'/assets/asset1.png'},
+    {id:2, imagePath:'/assets/asset2.png'},
+    {id:3, imagePath:'/assets/asset3.png'},
+    {id:4, imagePath:'/assets/asset4.png'},
+    {id:5, imagePath:'/assets/asset5.png'},
+    {id:6, imagePath:'/assets/asset6.png'},
+    {id:7, imagePath:'/assets/asset7.png'},
+    {id:8, imagePath:'/assets/asset8.png'},
+    {id:9, imagePath:'/assets/asset1.png'},
+    {id:10, imagePath:'/assets/asset2.png'},
+    {id:11, imagePath:'/assets/asset3.png'},
+    {id:12, imagePath:'/assets/asset4.png'},
+    {id:13, imagePath:'/assets/asset5.png'},
+    {id:14, imagePath:'/assets/asset6.png'},
+    {id:15, imagePath:'/assets/asset7.png'},
+    {id:16, imagePath:'/assets/asset8.png'},
+
+]
+
+//3.1.2) board element that will refernce the board
+  const boardEl = document.getElementById('board')
+
+  //2.1) a memoryGame variable
+        //- a varible thats used to start the game
+        let game

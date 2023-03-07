@@ -1,33 +1,94 @@
-h1{
-    color: blue;
+body{
+    background-color: #F0EEED;
 }
-h2{
+h1 {
+
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    font-size:60px;
+    color: #332c39;
+    text-align: center;
+}
+
+h2 {
     text-align: end;
-    background-color blue;
-    border-color:red;
-    padding:20px
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    padding: 20px;
     margin: 20px;
 
 }
-#start-game{
-    background-color: blue;
+
+#start-game {
+    background-color: #609EA2;
+    border: white;
     color: white;
 
 }
-#board{
-    display: grid;
-    grid-template-columns:repeat(4, 30vmin);
-    grid-template-rows: repeat(4, 20vmin);
-    background-color: blue;
+
+#board {
+    height: 700px;
+    background-color: #609EA2;
     border-style: dashed;
     border-radius: 5vmin;
-    border-color:white;
+    border-color: white;
+
 
 }
-#board > * {
-    border-style: solid;
-    border-color: white;
-    border-radius: 2vmin;
-    background-color: green;
-    border-width: 5px;
+
+.maincontainer {
+    display: grid;
+    grid-template-columns: repeat(4, 310px);
+    grid-template-rows: repeat(4, 180px);
+    gap: 30px;
+    margin: 30px;
+    background: none;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-style: ridge;
+    border-radius: 3vmin;
+    border-color:#F0EEED;
+    border-width: 2vmin;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #C92C6D;
+    color: white;
+    font-size: 50px;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    text-align: center;
+
+
+}
+
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100;
+    backface-visibility: hidden;
+    background: purple;
+    color: white;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.flipCard {
+    transform: rotateY(180deg);
 }
