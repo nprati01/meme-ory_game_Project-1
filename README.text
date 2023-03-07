@@ -59,3 +59,79 @@ const cardObjects = [
   //2.1) a memoryGame variable
         //- a varible thats used to start the game
         let game
+
+
+
+css code for flipping card
+.maincontainer {
+    display: grid;
+    grid-template-columns: repeat(4, 310px);
+    grid-template-rows: repeat(4, 180px);
+    gap: 30px;
+    margin: 30px;
+    background: none;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+
+}
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-style: ridge;
+    border-radius: 3vmin;
+    border-color:#F0EEED;
+    border-width: 2vmin;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #C92C6D;
+    color: white;
+    font-size: 50px;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    text-align: center;
+
+
+}
+
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100;
+    backface-visibility: hidden;
+    background: purple;
+    color: white;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.flipCard {
+    transform: rotateY(180deg);
+}
+
+
+js for card flip
+
+cardEls.forEach(function(evt){
+            addEventListener('click', flipCard)
+        })
+
+function flipCard(evt){
+    evt.target.classList.toggle('flipCard')
+        console.log('flipCard')
+}
+
+
+// cardEls.forEach(function(cardsArray, rowIdx) {
+    //   cardsArray.forEach(function(card co){
+    //     const cardId = `gamecard${rowIdx}`
+    //

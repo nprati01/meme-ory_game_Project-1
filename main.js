@@ -1,26 +1,28 @@
 console.log('testing')
 
   /*----- constants -----*/
-  //1.1 Define a constant to represent the cards and thier images
-//   const cardObjects = [
-//     {id:1 imagePath:'/assets/asset1.png'},
-//     {id:2, imagePath:'/assets/asset2.png'},
-//     {id:3, imagePath:'/assets/asset3.png'},
-//     {id:4, imagePath:'/assets/asset4.png'},
-//     {id:5, imagePath:'/assets/asset5.png'},
-//     {id:6, imagePath:'/assets/asset6.png'},
-//     {id:7, imagePath:'/assets/asset7.png'},
-//     {id:8, imagePath:'/assets/asset8.png'},
-//     {id:9, imagePath:'/assets/asset1.png'},
-//     {id:10, imagePath:'/assets/asset2.png'},
-//     {id:11, imagePath:'/assets/asset3.png'},
-//     {id:12, imagePath:'/assets/asset4.png'},
-//     {id:13, imagePath:'/assets/asset5.png'},
-//     {id:14, imagePath:'/assets/asset6.png'},
-//     {id:15, imagePath:'/assets/asset7.png'},
-//     {id:16, imagePath:'/assets/asset8.png'},
+  // 1.1 Define a constant to represent the cards and thier images
+  // const CARDOBJECTS = [
+  //   {src ='/assets/asset1.png'},
+  //   ([src ='/assets/asset3.png']),
+  //   ([src ='/assets/asset4.png']),
+  //   ([src ='/assets/asset5.png']),
+  //   ([src ='/assets/asset6.png']),
+  //   ([src ='/assets/asset7.png']),
+  //   ([src ='/assets/asset8.png']),
+  //   ([src ='/assets/asset1.png']),
+  //   ([src ='/assets/asset2.png']),
+  //   ([src ='/assets/asset3.png']),
+  //   ([src ='/assets/asset4.png']),
+  //   ([src ='/assets/asset5.png']),
+  //   ([src ='/assets/asset6.png']),
+  //   ([src ='/assets/asset7.png']),
+  //   ([src ='/assets/asset8.png']),
 
-// ]
+
+
+
+
 
 
 
@@ -31,7 +33,7 @@ console.log('testing')
         //a variable to determine if player is a winner or loser
         let gameWin
   //2.3) a guess variable
-  let guess
+  let guessesLeft
     //a variable that will count the number of guesses a player has
     //2.4) a variable that will reference the cards
     let cards= []
@@ -42,16 +44,21 @@ console.log('testing')
 
 
 
+
+
   /*----- cached elements  -----*/
   //3.1) start game button that will shuffle cards and display the cards on the board
   const startBtnEl =document.getElementById('start-game')
-  //3.1.2)
-
-
-  //3.1.3) a card element that will reference each card in the game
+  //3.1.2) a card element that will reference each card in the game
   const cardEls = document.querySelectorAll('.card')
   console.log(cardEls)
-  //3.1.4) a counter elemnt that will refernce the number of guesses the player has after each guess?
+  //3.1.3) a card back element that will reference the back of each card
+  const cardBackEl = document.querySelectorAll('.back')
+  console.log(cardBackEl)
+  //3.1.4) a card face element that will reference the front of each card
+  const cardFaceEl = document.querySelectorAll('.face')
+console.log(cardFaceEl)
+  //3.1.5) a counter elemnt that will refernce the number of guesses the player has after each guess?
   const guessCountDown =document.getElementById('guess-count')
   //3.1.5) wrong guess message element that will display the message when a user doesnt make a match
   //3.1.6) shuffle cards button element that will shuffle cards and restart game
@@ -63,16 +70,15 @@ console.log('testing')
   /*----- event listeners -----*/
   //creat event listener for start game button
     //this should intialize the board and the game counter
-    startBtnEl.addEventListener('click', renderBoard)
+    //startBtnEl.addEventListener('click', renderBoard)
 
 
   //create event listener for when a card is clicked
-        //-this should include an animation for flippling card
-        //should only allow the user to click two cards at a time
-
-        cardEls.forEach(function(evt){
-            addEventListener('click', flipCard)
+        cardBackEl.forEach(function(back, idx){
+          addEventListener('click', handleClick)
         })
+
+
 
 
 
@@ -98,22 +104,26 @@ init()
 function init(){
     board = [
         [0, 0, 0, 0], //row
-        // [0, 0, 0, 0], //row 1
-        // [0, 0, 0, 0], // row 2
-        // [0, 0, 0, 0] //row 4
+        [0, 0, 0, 0], //row 1
+        [0, 0, 0, 0], // row 2
+        [0, 0, 0, 0] //row 4
 
     ]
 
 gameWin = null
-guess = 0
+guessLeft = 18
 render()
 }
-//function for card flip
-function flipCard(evt){
-    evt.target.classList.toggle('flipCard')
-        console.log('flipCard')
+//function for clicked card
+function handleClick(evt){
+if 
+  }
 
-    }
+
+
+
+
+
 //function for guess counter
 
 
@@ -139,10 +149,32 @@ function render(){
     renderBoard()
 }
 function renderBoard(){
+
+// let backFaceArray = Array.from(CARDOBJECTS)
+// CARDOBJECTS.forEach(function(src,idx){
+
+// })
+
+
+// console.log(backFaceArray)
+
+
 let cardsArray = Array.from(cardEls)
     cardEls.forEach(function(card, idx) {
+
+
+
+
         //card.innerHTML ="random image will go here"
-        console.log(card)
+
+
 
 })
     }
+
+
+    // cardEls.forEach(function(cardsArray, rowIdx) {
+    //   cardsArray.forEach(function(cardValue, columnIdx){
+    //     const cardId = `gamecard${rowIdx}${columnIdx}`
+    //     const cardEl =document.getElementById(cardId)
+    //     cardEl.style.backgroundImage= CARDOBJECTS[cardValue]

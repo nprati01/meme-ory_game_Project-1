@@ -1,11 +1,12 @@
-body{
+body {
     background-color: #F0EEED;
 }
+
 h1 {
 
     font-family: 'M PLUS 1p', sans-serif;
     font-family: 'Rampart One', cursive;
-    font-size:60px;
+    font-size: 60px;
     color: #332c39;
     text-align: center;
 }
@@ -27,7 +28,12 @@ h2 {
 }
 
 #board {
-    height: 700px;
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    justify-content: center;
+    margin: auto;
+
     background-color: #609EA2;
     border-style: dashed;
     border-radius: 5vmin;
@@ -38,13 +44,12 @@ h2 {
 
 .maincontainer {
     display: grid;
-    grid-template-columns: repeat(4, 310px);
-    grid-template-rows: repeat(4, 180px);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: .1fr;
     margin: 30px;
     background: none;
-    transform-style: preserve-3d;
-    transition: all 0.8s ease;
+
 
 }
 
@@ -53,21 +58,20 @@ h2 {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     border-style: ridge;
     border-radius: 3vmin;
-    border-color:#F0EEED;
+    border-color: #F0EEED;
     border-width: 2vmin;
-    transform-style: preserve-3d;
-    transition: all 0.8s ease;
+
 }
 
-.front {
-    position: absolute;
+.back {
+    position: relative;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    /* backface-visibility: hidden; */
     background: #C92C6D;
     color: white;
     font-size: 50px;
@@ -78,17 +82,31 @@ h2 {
 
 }
 
-.back {
+.face {
     position: absolute;
     width: 100%;
-    height: 100;
-    backface-visibility: hidden;
-    background: purple;
+    height: 100%;
+   display: none;
+    background-color: red;
     color: white;
     text-align: center;
-    transform: rotateY(180deg);
 }
 
-.flipCard {
-    transform: rotateY(180deg);
+#restart-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    background-color: #C92C6D;
+    border-style: outset;
+    border-radius: 1vmin;
+    border-color: #F0EEED;
+    padding: 15px 32px;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    color: #F0EEED;
+    text-align: center;
+    font-size: 20px;
+
+
 }
