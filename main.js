@@ -2,23 +2,23 @@ console.log('testing')
 
 /*----- constants -----*/
 // 1.1 Define a constant to represent the cards and thier images
-const cardArray = [
-  { name:"asset1", img: '/assets/asset1.png' },
-  { name:"asset1", img: '/assets/asset1.png' },
-  { name:"asset2", img: '/assets/asset2.png' },
-  { name:"asset2", img: '/assets/asset2.png' },
-  { name:"asset3", img: '/assets/asset3.png' },
-  { name:"asset3", img: '/assets/asset3.png' },
-  { name:"asset4", img: '/assets/asset4.png' },
-  { name:"asset4", img: '/assets/asset4.png' },
-  { name:"asset5", img: '/assets/asset5.png' },
-  { name:"asset5", img: '/assets/asset5.png' },
-  { name:"asset6", img: '/assets/asset6.png' },
-  { name:"asset6", img: '/assets/asset6.png' },
-  { name:"asset7", img: '/assets/asset7.png' },
-  { name:"asset7", img: '/assets/asset7.png' },
-  { name:"asset8", img: '/assets/asset8.png' },
-  { name:"asset8", img: '/assets/asset8.png' },
+const faceArray = [
+  { asset1: '/assets/asset1.png' },
+  { asset1: '/assets/asset1.png' },
+  { asset2: '/assets/asset2.png' },
+  { asset2: '/assets/asset2.png' },
+  { asset3: '/assets/asset3.png' },
+  { asset3: '/assets/asset3.png' },
+  { asset4: '/assets/asset4.png' },
+  { asset4: '/assets/asset4.png' },
+  { asset5: '/assets/asset5.png' },
+  { asset5: '/assets/asset5.png' },
+  { asset6: '/assets/asset6.png' },
+  { asset6: '/assets/asset6.png' },
+  { asset7: '/assets/asset7.png' },
+  { asset7: '/assets/asset7.png' },
+  { asset8: '/assets/asset8.png' },
+  { asset8: '/assets/asset8.png' },
 
 
 ]
@@ -33,7 +33,7 @@ const cardArray = [
 
 //2.2) a winner variable
 //a variable to determine if player is a winner or loser
-let gameWin
+let gameWinner
 //2.3) a guess variable
 let guessesLeft
 //a variable that will count the number of guesses a player has
@@ -41,7 +41,8 @@ let guessesLeft
 let cards = []
 //a variable that represents an array of cards to display when game starts
 //2.5) a variable that will reference card positions
-let cardPositions = []
+let cardsMatch = []
+
 
 
 
@@ -50,7 +51,7 @@ let cardPositions = []
 
 /*----- cached elements  -----*/
 //3.1) start game button that will shuffle cards and display the cards on the board
-const startBtnEl = document.getElementById('start-game')
+//const startBtnEl = document.getElementById('start-game')
 //3.1.2) a card element that will reference each card in the game
 const cardEls = document.querySelectorAll('.card')
 // console.log(cardEls)
@@ -72,7 +73,10 @@ const tryAgainEl = document.getElementById('restart-game')
 /*----- event listeners -----*/
 //creat event listener for start game button
 //this should intialize the board and the game counter
-//startBtnEl.addEventListener('click', renderBoard)
+tryAgainEl.addEventListener('click', function(){
+  window.location.reload()
+  return
+})
 
 
 //create event listener for when a card is clicked
@@ -100,6 +104,8 @@ function init() {
 
   gameWin = null
   guessLeft = 18
+  cardsMatch= null
+  cards = []
   render()
 }
 //function for clicked card
@@ -107,8 +113,8 @@ function init() {
 cardEls.forEach(card => {
   card.addEventListener('click', (event) => {
 
-    console.log(event.target)
-    console.log(card.children)
+    // console.log(event.target)
+    // console.log(card.children
 
     if (event.target.classList.contains('back')) {
       event.target.classList.toggle('face')
@@ -118,6 +124,7 @@ cardEls.forEach(card => {
       card.children[1].classList.toggle('back')
       card.children[1].classList.toggle('face')
     }
+
   })
 })
 
@@ -125,7 +132,8 @@ cardEls.forEach(card => {
 //function for guess counter
 
 
-//function for correct guesses
+//function for diasbleing click in game play
+
 
 
 
@@ -143,9 +151,27 @@ cardEls.forEach(card => {
 
 //render functions
 function render() {
-  console.log('calling render')
+  // console.log('calling render')
   renderBoard()
 }
 function renderBoard(){
-return
-}
+  // cardFaceEl.forEach(function(face, fIndex){
+  // const faceId = `face${fIndex}`
+faceArray.forEach(function(img, idx){
+      const cardFaceEl = document.getElementById(`face${idx}`)
+      cardFaceEl.innerHTML = `<img src="assets/asset${idx+1}.png"/>`
+console.log(cardFaceEl)
+
+      console.log(img.asset1)
+      console.log(idx+1)
+
+
+
+
+    })
+  }
+    // faceImg.style.backgroundImage = faceArray[face]
+
+
+
+    // console.log()

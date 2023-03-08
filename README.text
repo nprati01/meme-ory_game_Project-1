@@ -135,3 +135,11 @@ function flipCard(evt){
     //   cardsArray.forEach(function(card co){
     //     const cardId = `gamecard${rowIdx}`
     //
+
+
+let clicked =false;
+function disableClick (card){if(!clicked){
+  clicked = true;
+  alert("you cant click a card twice ")
+console.log(clicked)
+}}
