@@ -121,7 +121,7 @@ cardEls.forEach(card => {
       event.target.classList.toggle('back')
     }
     if (card.children[1].classList.contains('face')) {
-      card.children[1].classList.toggle('back')
+      //card.children[1].classList.toggle('back')
       card.children[1].classList.toggle('face')
     }
 
