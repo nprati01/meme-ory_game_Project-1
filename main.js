@@ -114,6 +114,7 @@ function init() {
   cardsMatch= null
   cards = []
   render()
+  addCardClickEvent(cardEls)
 }
 //render functions
 function render() {
@@ -140,7 +141,8 @@ function renderBoard(){
 
   cardsArray.forEach(function(img, idx){
     const cardFaceEl = document.getElementById(`face${idx}`)
-    cardFaceEl.innerHTML = `<img src= "${cardsArray[idx]}"/>`
+    cardFaceEl.innerHTML = `<img class="img" src= "${cardsArray[idx]}"/>`
+
     //console.log(cardFaceEl)
   })
  //console.log(cardsArray)
@@ -148,43 +150,51 @@ function renderBoard(){
 
 
 //function for clicked card
-cardEls.forEach(card => {
-  card.addEventListener('click', (event) => {
-if(firstClick === ''  || secondClick === ''){
-    if (event.target.classList.contains('back')) {
-      event.target.classList.toggle('face')
-      event.target.classList.toggle('back')
-    }
-    if (card.children[1].classList.contains('face')) {
-      card.children[1].classList.toggle('back')
-      card.children[1].classList.toggle('face')
-    }
-  }
-    if(firstClick === ''){
+function addCardClickEvent(cardEls) {
 
-    firstClick = card.children[1].innerHTML
-    console.log(firstClick)
-    console.log(secondClick)
-  }else if(firstClick !== '' && secondClick === ''){
-    secondClick = card.children[1].innerHTML
-    console.log(firstClick)
-    console.log(secondClick)
-  }
-  if(firstClick === secondClick){
-    console.log('its a match')
-  }
-  console.log(event.target)
-})
-
+  cardEls.forEach((card) => {
+    card.addEventListener("click", (event) => {
+    if(firstClick === ''  || secondClick === ''){
+      if (event.target.classList.contains('img')) {
+        const parentEl = event.target.parentElement.parentElement
+        const backEl = parentEl.children[0]
+        console.log(parentEl)
+        console.log(backEl)
+        backEl.style.display = "block";
+      } else if (event.target.classList.contains("back")) {
+        event.target.style.display = "none";
+      }console.log(event.target)
+    }
+    });
   })
 
-////something
-// let imgs = ('face').getElementByTagName('img'), len =imgs.length, i;
-// for (i=0; i<len; i++){
-//   if(imgs[i].src.match(`"assets/asset${idx+1}.png"`)){
-//     console.log('i know what im doing')
-//   }
-// }
+
+
+  //if first click is empty store click
+    if(firstClick === ''){
+
+    firstClick =
+    console.log(firstClick)
+//if first click is not empty store second click
+  }else if(firstClick !== '' && secondClick === ''){
+    secondClick = card.children[1].innerHTML
+    console.log(secondClick)
+
+  }//if first card click does not equal second card click then toggle display of face to none and back to block
+  // if(secondClick !== firstClick){
+  //   console.log('does not match')
+
+  // }
+  if( firstClick === secondClick){
+    console.log('matches')
+  }else if(Boolean(secondClick) === false){
+    return
+  }else{console.log(event.target.nextElementSibling)
+
+  }
+
+  }
+
 
 //function for guess counter
 

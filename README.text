@@ -179,3 +179,42 @@ cardEls.forEach(card => {
   if(cardFaceEl.TagName.contains('IMG')){console.log('im in the img')}
   })
 })
+//   setTimeout(() =>{
+  //     console.log("cards dont matcj")
+  //   },3000)
+  // }
+
+
+
+  cardEls.forEach(card => {
+  card.addEventListener('click', (event) => {
+    //if first click is empty and second click is empty
+if(firstClick === ''  || secondClick === ''){
+    if (event.target.classList.contains('back')) {
+      event.target.classList.toggle('back')
+      event.target.classList.toggle('face')
+
+    }
+    if (card.children[1].classList.contains('face')) {
+      card.children[1].classList.toggle('back')
+      card.children[1].classList.toggle('face')
+console.log(card.children[1])
+    }
+
+
+
+
+card.addEventListener('click', (event) => {
+    //if first click is empty and second click is empty
+if(firstClick === ''  || secondClick === ''){
+    if (event.target.classList.contains('back')) {
+      event.target.classList.toggle('back')
+      event.target.classList.toggle('face')
+console.log(event.target)
+    }
+    if (card.children[1].classList.contains('face')) {
+      card.children[1].classList.toggle('back')
+      card.children[1].classList.toggle('face')
+      console.log()
+console.log(card.children[1])
+    }
