@@ -131,6 +131,8 @@ function flipCard(evt){
 }
 
 
+//misc code
+
 // cardEls.forEach(function(cardsArray, rowIdx) {
     //   cardsArray.forEach(function(card co){
     //     const cardId = `gamecard${rowIdx}`
@@ -143,3 +145,37 @@ function disableClick (card){if(!clicked){
   alert("you cant click a card twice ")
 console.log(clicked)
 }}
+
+
+///misc code that may be useful
+// cardFaceEl.forEach(function(face, fIndex){
+  // const faceId = `face${fIndex}`
+
+  // console.log(cardFaceEl)
+
+//       console.log(img.asset1)
+//       console.log(idx+1)
+
+
+
+
+
+
+///click event listener
+cardEls.forEach(card => {
+  card.addEventListener('click', (event) => {
+
+    // console.log(event.target)
+    // console.log(card.children
+
+    if (event.target.classList.contains('back')) {
+      event.target.classList.toggle('face')
+      event.target.classList.toggle('back')
+    }
+    if (card.children[1].classList.contains('face')) {
+      //card.children[1].classList.toggle('back')
+      card.children[1].classList.toggle('face')
+    }
+  if(cardFaceEl.TagName.contains('IMG')){console.log('im in the img')}
+  })
+})

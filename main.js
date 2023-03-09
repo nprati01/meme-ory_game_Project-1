@@ -3,22 +3,22 @@ console.log('testing')
 /*----- constants -----*/
 // 1.1 Define a constant to represent the cards and thier images
 const faceArray = [
-  { asset1: '/assets/asset1.png' },
-  { asset1: '/assets/asset1.png' },
-  { asset2: '/assets/asset2.png' },
-  { asset2: '/assets/asset2.png' },
-  { asset3: '/assets/asset3.png' },
-  { asset3: '/assets/asset3.png' },
-  { asset4: '/assets/asset4.png' },
-  { asset4: '/assets/asset4.png' },
-  { asset5: '/assets/asset5.png' },
-  { asset5: '/assets/asset5.png' },
-  { asset6: '/assets/asset6.png' },
-  { asset6: '/assets/asset6.png' },
-  { asset7: '/assets/asset7.png' },
-  { asset7: '/assets/asset7.png' },
-  { asset8: '/assets/asset8.png' },
-  { asset8: '/assets/asset8.png' },
+  { asset: '/assets/asset1.png'},
+  { asset: '/assets/asset2.png'},
+  { asset: '/assets/asset3.png'},
+  { asset: '/assets/asset4.png'},
+  { asset: '/assets/asset5.png'},
+  { asset: '/assets/asset6.png'},
+  { asset: '/assets/asset7.png'},
+  { asset: '/assets/asset8.png'},
+  // { asset9: '/assets/asset9.png' },
+  // { asset10: '/assets/asset10.png' },
+  // { asset11: '/assets/asset11.png' },
+  // { asset12: '/assets/asset12.png' },
+  // { asset13: '/assets/asset13.png' },
+  // { asset14: '/assets/asset14.png' },
+  // { asset15: '/assets/asset15.png' },
+  // { asset16: '/assets/asset16.png' },
 
 
 ]
@@ -40,8 +40,11 @@ let guessesLeft
 //2.4) a variable that will reference the cards
 let cards = []
 //a variable that represents an array of cards to display when game starts
-//2.5) a variable that will reference card positions
-let cardsMatch = []
+//2.5) a variable that will store first click
+let firstClick = ''
+//2.6 a variable that will store second click
+let secondClick = ''
+
 
 
 
@@ -62,6 +65,7 @@ const cardBackEl = document.querySelectorAll('.back')
 const cardFaceEl = document.querySelectorAll('.face')
 // console.log(cardFaceEl)
 //3.1.5) a counter elemnt that will refernce the number of guesses the player has after each guess?
+//you can use event.detail
 const guessCountDown = document.getElementById('guess-count')
 //3.1.5) wrong guess message element that will display the message when a user doesnt make a match
 //3.1.6) shuffle cards button element that will shuffle cards and restart game
@@ -80,6 +84,9 @@ tryAgainEl.addEventListener('click', function(){
 
 
 //create event listener for when a card is clicked
+
+
+
 //this should only allow you to flip two cards at a time
 //if the cards match the remain shown
 //if the cards do not match they are hidden
@@ -108,33 +115,78 @@ function init() {
   cards = []
   render()
 }
-//function for clicked card
+//render functions
+function render() {
+  console.log('calling render')
 
+  renderBoard()
+}
+//function to render board
+
+function renderCards(){
+  let cardsArray = []
+  let randomCards =[]
+  for(let i =0; i < faceArray.length; i++ )
+  cardsArray.push(faceArray[i].asset)
+  for(let i =0; i < faceArray.length; i++ )
+  cardsArray.push(faceArray[i].asset)
+return cardsArray
+
+}
+
+function renderBoard(){
+  // console.log('rendering board')
+  let cardsArray = renderCards()
+
+  cardsArray.forEach(function(img, idx){
+    const cardFaceEl = document.getElementById(`face${idx}`)
+    cardFaceEl.innerHTML = `<img src= "${cardsArray[idx]}"/>`
+    //console.log(cardFaceEl)
+  })
+ //console.log(cardsArray)
+}
+
+
+//function for clicked card
 cardEls.forEach(card => {
   card.addEventListener('click', (event) => {
-
-    // console.log(event.target)
-    // console.log(card.children
-
+if(firstClick === ''  || secondClick === ''){
     if (event.target.classList.contains('back')) {
       event.target.classList.toggle('face')
       event.target.classList.toggle('back')
     }
     if (card.children[1].classList.contains('face')) {
-      //card.children[1].classList.toggle('back')
+      card.children[1].classList.toggle('back')
       card.children[1].classList.toggle('face')
     }
+  }
+    if(firstClick === ''){
 
-  })
+    firstClick = card.children[1].innerHTML
+    console.log(firstClick)
+    console.log(secondClick)
+  }else if(firstClick !== '' && secondClick === ''){
+    secondClick = card.children[1].innerHTML
+    console.log(firstClick)
+    console.log(secondClick)
+  }
+  if(firstClick === secondClick){
+    console.log('its a match')
+  }
+  console.log(event.target)
 })
 
+  })
+
+////something
+// let imgs = ('face').getElementByTagName('img'), len =imgs.length, i;
+// for (i=0; i<len; i++){
+//   if(imgs[i].src.match(`"assets/asset${idx+1}.png"`)){
+//     console.log('i know what im doing')
+//   }
+// }
 
 //function for guess counter
-
-
-//function for diasbleing click in game play
-
-
 
 
 //function for incorrect guesses
@@ -147,31 +199,3 @@ cardEls.forEach(card => {
 
 
 //function to shuffle cards
-
-
-//render functions
-function render() {
-  // console.log('calling render')
-  renderBoard()
-}
-function renderBoard(){
-  // cardFaceEl.forEach(function(face, fIndex){
-  // const faceId = `face${fIndex}`
-faceArray.forEach(function(img, idx){
-      const cardFaceEl = document.getElementById(`face${idx}`)
-      cardFaceEl.innerHTML = `<img src="assets/asset${idx+1}.png"/>`
-console.log(cardFaceEl)
-
-      console.log(img.asset1)
-      console.log(idx+1)
-
-
-
-
-    })
-  }
-    // faceImg.style.backgroundImage = faceArray[face]
-
-
-
-    // console.log()
