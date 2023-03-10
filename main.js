@@ -3,24 +3,14 @@ console.log('testing')
 /*----- constants -----*/
 // 1.1 Define a constant to represent the cards and thier images
 const faceArray = [
-  { asset: '/assets/asset1.png' },
-  { asset: '/assets/asset2.png' },
-  { asset: '/assets/asset3.png' },
-  { asset: '/assets/asset4.png' },
-  { asset: '/assets/asset5.png' },
-  { asset: '/assets/asset6.png' },
-  { asset: '/assets/asset7.png' },
-  { asset: '/assets/asset8.png' },
-  // { asset9: '/assets/asset9.png' },
-  // { asset10: '/assets/asset10.png' },
-  // { asset11: '/assets/asset11.png' },
-  // { asset12: '/assets/asset12.png' },
-  // { asset13: '/assets/asset13.png' },
-  // { asset14: '/assets/asset14.png' },
-  // { asset15: '/assets/asset15.png' },
-  // { asset16: '/assets/asset16.png' },
-
-
+  { asset: 'assets/asset1.png' },
+  { asset: 'assets/asset2.png' },
+  { asset: 'assets/asset3.png' },
+  { asset: 'assets/asset4.png' },
+  { asset: 'assets/asset5.png' },
+  { asset: 'assets/asset6.png' },
+  { asset: 'assets/asset7.png' },
+  { asset: 'assets/asset8.png' },
 ]
 
 
@@ -140,9 +130,9 @@ function renderBoard() {
 
   cardsArray.forEach(function (img, idx) {
     const cardFaceEl = document.getElementById(`face${idx}`)
-    cardFaceEl.innerHTML = `<img src= "${cardsArray[idx]}"/>`
+    cardFaceEl.innerHTML = `<img src="${cardsArray[idx]}"/>`
 
-    //console.log(cardFaceEl)
+    console.log(cardsArray[idx])
   })
   //console.log(cardsArray)
 }
@@ -207,6 +197,7 @@ function addCardClickEvent(cardEls) {
             guessCountDown.innerText = guessesLeft
 
           }, 2000)
+
         }
       }
     })
