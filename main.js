@@ -3,14 +3,14 @@ console.log('testing')
 /*----- constants -----*/
 // 1.1 Define a constant to represent the cards and thier images
 const faceArray = [
-  { asset: '/assets/asset1.png'},
-  { asset: '/assets/asset2.png'},
-  { asset: '/assets/asset3.png'},
-  { asset: '/assets/asset4.png'},
-  { asset: '/assets/asset5.png'},
-  { asset: '/assets/asset6.png'},
-  { asset: '/assets/asset7.png'},
-  { asset: '/assets/asset8.png'},
+  { asset: '/assets/asset1.png' },
+  { asset: '/assets/asset2.png' },
+  { asset: '/assets/asset3.png' },
+  { asset: '/assets/asset4.png' },
+  { asset: '/assets/asset5.png' },
+  { asset: '/assets/asset6.png' },
+  { asset: '/assets/asset7.png' },
+  { asset: '/assets/asset8.png' },
   // { asset9: '/assets/asset9.png' },
   // { asset10: '/assets/asset10.png' },
   // { asset11: '/assets/asset11.png' },
@@ -75,7 +75,7 @@ const tryAgainEl = document.getElementById('restart-game')
 
 
 /*----- event listeners -----*/
-tryAgainEl.addEventListener('click', function(){
+tryAgainEl.addEventListener('click', function () {
   window.location.reload()
   return
 })
@@ -110,7 +110,7 @@ function init() {
   gameWin = null
   guessesLeft = 18
   guessCountDown.innerText = guessesLeft
-  cardsMatch= null
+  cardsMatch = null
   cards = []
   render()
   addCardClickEvent(cardEls)
@@ -123,28 +123,28 @@ function render() {
 }
 //function to render board
 
-function renderCards(){
+function renderCards() {
   let cardsArray = []
-  let randomCards =[]
-  for(let i =0; i < faceArray.length; i++ )
-  cardsArray.push(faceArray[i].asset)
-  for(let i =0; i < faceArray.length; i++ )
-  cardsArray.push(faceArray[i].asset)
-return cardsArray
+  let randomCards = []
+  for (let i = 0; i < faceArray.length; i++)
+    cardsArray.push(faceArray[i].asset)
+  for (let i = 0; i < faceArray.length; i++)
+    cardsArray.push(faceArray[i].asset)
+  return cardsArray
 
 }
 
-function renderBoard(){
+function renderBoard() {
   // console.log('rendering board')
   let cardsArray = renderCards()
 
-  cardsArray.forEach(function(img, idx){
+  cardsArray.forEach(function (img, idx) {
     const cardFaceEl = document.getElementById(`face${idx}`)
-    cardFaceEl.innerHTML = `<img class="img" src= "${cardsArray[idx]}"/>`
+    cardFaceEl.innerHTML = `<img src= "${cardsArray[idx]}"/>`
 
     //console.log(cardFaceEl)
   })
- //console.log(cardsArray)
+  //console.log(cardsArray)
 }
 let click1
 let click2
@@ -156,52 +156,62 @@ function addCardClickEvent(cardEls) {
 
   cardEls.forEach((card) => {
     card.addEventListener("click", (event) => {
-    if(firstClick === ''  || secondClick === ''){
-      if(event.target.classList.contains('img')) {
-        const parentEl = event.target.parentElement.parentElement
-        const backEl = parentEl.children[0]
-        console.log(parentEl)
-        console.log(backEl)
-        backEl.style.display = "block"
-       } else if(event.target.classList.contains("back")) {
-        event.target.style.display = "none";
-      }
-      if(firstClick === ''){
+      // if(firstClick === ''  || secondClick === ''){
+      //   if(event.target.classList.contains('img')) {
+      //     const parentEl = event.target.parentElement.parentElement
+      //     const backEl = parentEl.children[0]
+      //     console.log(parentEl)
+      //     console.log(backEl)
+      //     backEl.style.display = "block"
+      //    } else if(event.target.classList.contains("back")) {
+      //     event.target.style.display = "none";
+      //}
+      if (firstClick === '') {
+
         click1 = event.target.parentElement
-        firstClick =card.children[1].innerHTML
-        console.log(firstClick)
-        }else if(firstClick !== '' && secondClick === ''){
-          click2= event.target.parentElement
-        secondClick =card.children[1].innerHTML
-        console.log(secondClick)
+        firstClick = card.children[1].innerHTML
+        click1.children[0].style.display = "none"
+        click1.children[1].style.display = "block"
         console.log(click1)
-        console.log(click2)
+      } else if (firstClick !== '' && secondClick === '') {
+        click2 = event.target.parentElement
+        secondClick = card.children[1].innerHTML
+        click2.children[0].style.display = "none"
+        click2.children[1].style.display = "block"
+        // console.log(secondClick)
+        // console.log(click1)
+        console.log(click1.children[0])
         //
 
-      if (firstClick === secondClick){
-        console.log('its a match')
+        if (firstClick === secondClick) {
+          console.log('its a match')
 
-        firstClick =''
-        secondClick= ''
-        guessesLeft--
-        guessCountDown.innerText = guessesLeft
+          firstClick = ''
+          secondClick = ''
+          guessesLeft--
+          guessCountDown.innerText = guessesLeft
+        }
+        else {
+          setTimeout(() => {
+            console.log('its not a match')
+            click1.children[0].style.display = "block"
+            click1.children[1].style.display = "none"
+            //event.target.style.display = "none";
+            console.log(click1)
+            click2.children[0].style.display = "block"
+            click2.children[1].style.display = "none"
+
+            firstClick = ''
+            secondClick = ''
+            guessesLeft--
+            guessCountDown.innerText = guessesLeft
+
+          }, 2000)
+        }
       }
-      else{
-      console.log('its not a match')
-
-
-      return
-      }
-    }
-
-      }
-
-
-
+    })
   })
-})
-  }
-
+}
 //function for guess count down
 // function guessCount(){
 
