@@ -218,3 +218,32 @@ console.log(event.target)
       console.log()
 console.log(card.children[1])
     }
+
+
+
+  // if( firstClick === secondClick){
+
+  //   console.log('matches')
+
+  //if first click is empty store click
+
+//if first click is not empty store second click
+  // }else if(firstClick !== '' && secondClick === ''){
+  //   secondClick =
+  //   console.log(secondClick)
+
+  // }//if first card click does not equal second card click then toggle display of face to none and back to block
+  // if(secondClick !== firstClick){
+  //   console.log('does not match')
+
+  // }
+
+  // if(firstClick === ''){
+  //   firstClick =card.children[1].innerHTML
+  //   console.log(firstClick)
+  // }else if(firstClick !== '' && secondClick === ''){
+  //   secondClick =card.children[1].innerHTML
+  //   console.log(secondClick)
+  // }else if(firstClick != secondClick){
+  //   console.log('not a match ')
+  //   }

@@ -19,6 +19,9 @@ h2 {
     margin: 20px;
 
 }
+h2 span{
+    font-size: 30px;
+}
 p{
     pointer-events: none;
 }

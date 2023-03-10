@@ -66,7 +66,7 @@ const cardFaceEl = document.querySelectorAll('.face')
 // console.log(cardFaceEl)
 //3.1.5) a counter elemnt that will refernce the number of guesses the player has after each guess?
 //you can use event.detail
-const guessCountDown = document.getElementById('guess-count')
+const guessCountDown = document.querySelector('.clickCount')
 //3.1.5) wrong guess message element that will display the message when a user doesnt make a match
 //3.1.6) shuffle cards button element that will shuffle cards and restart game
 const tryAgainEl = document.getElementById('restart-game')
@@ -75,8 +75,6 @@ const tryAgainEl = document.getElementById('restart-game')
 
 
 /*----- event listeners -----*/
-//creat event listener for start game button
-//this should intialize the board and the game counter
 tryAgainEl.addEventListener('click', function(){
   window.location.reload()
   return
@@ -110,7 +108,8 @@ function init() {
   ]
 
   gameWin = null
-  guessLeft = 18
+  guessesLeft = 18
+  guessCountDown.innerText = guessesLeft
   cardsMatch= null
   cards = []
   render()
@@ -147,6 +146,9 @@ function renderBoard(){
   })
  //console.log(cardsArray)
 }
+let click1
+let click2
+
 
 
 //function for clicked card
@@ -155,57 +157,55 @@ function addCardClickEvent(cardEls) {
   cardEls.forEach((card) => {
     card.addEventListener("click", (event) => {
     if(firstClick === ''  || secondClick === ''){
-      if (event.target.classList.contains('img')) {
+      if(event.target.classList.contains('img')) {
         const parentEl = event.target.parentElement.parentElement
         const backEl = parentEl.children[0]
         console.log(parentEl)
         console.log(backEl)
-        backEl.style.display = "block";
-      } else if (event.target.classList.contains("back")) {
+        backEl.style.display = "block"
+       } else if(event.target.classList.contains("back")) {
         event.target.style.display = "none";
-      }console.log(event.target)
+      }
+      if(firstClick === ''){
+        click1 = event.target.parentElement
+        firstClick =card.children[1].innerHTML
+        console.log(firstClick)
+        }else if(firstClick !== '' && secondClick === ''){
+          click2= event.target.parentElement
+        secondClick =card.children[1].innerHTML
+        console.log(secondClick)
+        console.log(click1)
+        console.log(click2)
+        //
+
+      if (firstClick === secondClick){
+        console.log('its a match')
+
+        firstClick =''
+        secondClick= ''
+        guessesLeft--
+        guessCountDown.innerText = guessesLeft
+      }
+      else{
+      console.log('its not a match')
+
+
+      return
+      }
     }
-    });
+
+      }
+
+
+
   })
-
-
-
-  //if first click is empty store click
-    if(firstClick === ''){
-
-    firstClick =
-    console.log(firstClick)
-//if first click is not empty store second click
-  }else if(firstClick !== '' && secondClick === ''){
-    secondClick = card.children[1].innerHTML
-    console.log(secondClick)
-
-  }//if first card click does not equal second card click then toggle display of face to none and back to block
-  // if(secondClick !== firstClick){
-  //   console.log('does not match')
-
-  // }
-  if( firstClick === secondClick){
-    console.log('matches')
-  }else if(Boolean(secondClick) === false){
-    return
-  }else{console.log(event.target.nextElementSibling)
-
+})
   }
 
-  }
+//function for guess count down
+// function guessCount(){
 
 
-//function for guess counter
+//   guessCountDown.innerHTML = count
 
-
-//function for incorrect guesses
-
-
-
-//function for game winner
-
-
-
-
-//function to shuffle cards
+// }
