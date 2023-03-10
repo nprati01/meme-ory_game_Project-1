@@ -247,3 +247,27 @@ console.log(card.children[1])
   // }else if(firstClick != secondClick){
   //   console.log('not a match ')
   //   }
+
+  // if(firstClick === ''  || secondClick === ''){
+      //   if(event.target.classList.contains('img')) {
+      //     const parentEl = event.target.parentElement.parentElement
+      //     const backEl = parentEl.children[0]
+      //     console.log(parentEl)
+      //     console.log(backEl)
+      //     backEl.style.display = "block"
+      //    } else if(event.target.classList.contains("back")) {
+      //     event.target.style.display = "none";
+      //}
+
+
+function renderMessage() {
+  console.log(matches)
+  if (matches === 2){
+    winLoseMessage.textContent='YOU WIN!'
+    messageEl.textContent = ''
+      }
+ else if (matches !== 2 && guessesLeft === 0){
+    winLoseMessage.textContent='YOU LOSE!'
+    messageEl.textContent = ''
+}
+}

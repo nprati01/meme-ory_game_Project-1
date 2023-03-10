@@ -34,8 +34,10 @@ let cards = []
 let firstClick = ''
 //2.6 a variable that will store second click
 let secondClick = ''
+let matches
 
-
+let click1
+let click2
 
 
 
@@ -56,13 +58,18 @@ const cardFaceEl = document.querySelectorAll('.face')
 // console.log(cardFaceEl)
 //3.1.5) a counter elemnt that will refernce the number of guesses the player has after each guess?
 //you can use event.detail
+//3.1.6) a counter element that will display the number of matches
+const matchCount = document.querySelector('.matchCount')
 const guessCountDown = document.querySelector('.clickCount')
 //3.1.5) wrong guess message element that will display the message when a user doesnt make a match
 //3.1.6) shuffle cards button element that will shuffle cards and restart game
+//3.1.7)guess message element that will display the message when a user has a match or doesnt have a matxh
+const messageEl = document.getElementById('message')
 const tryAgainEl = document.getElementById('restart-game')
 //3.1.7) a game winner message element that will display a message when the player wins
 //3.1.8)a game loser message element that will display a message when the user loses
-
+//3.1.9) a game winner/loser message element that will display a message when the player wins or loses
+const winLoseMessage = document.getElementById('game-title')
 
 /*----- event listeners -----*/
 tryAgainEl.addEventListener('click', function () {
@@ -97,8 +104,8 @@ function init() {
 
   ]
 
-  gameWin = null
-  guessesLeft = 18
+  matches = null
+  guessesLeft = 10
   guessCountDown.innerText = guessesLeft
   cardsMatch = null
   cards = []
@@ -110,6 +117,7 @@ function render() {
   console.log('calling render')
 
   renderBoard()
+  renderCards()
 }
 //function to render board
 
@@ -131,14 +139,8 @@ function renderBoard() {
   cardsArray.forEach(function (img, idx) {
     const cardFaceEl = document.getElementById(`face${idx}`)
     cardFaceEl.innerHTML = `<img src="${cardsArray[idx]}"/>`
-
-    console.log(cardsArray[idx])
   })
-  //console.log(cardsArray)
 }
-let click1
-let click2
-
 
 
 //function for clicked card
@@ -146,18 +148,10 @@ function addCardClickEvent(cardEls) {
 
   cardEls.forEach((card) => {
     card.addEventListener("click", (event) => {
-      // if(firstClick === ''  || secondClick === ''){
-      //   if(event.target.classList.contains('img')) {
-      //     const parentEl = event.target.parentElement.parentElement
-      //     const backEl = parentEl.children[0]
-      //     console.log(parentEl)
-      //     console.log(backEl)
-      //     backEl.style.display = "block"
-      //    } else if(event.target.classList.contains("back")) {
-      //     event.target.style.display = "none";
-      //}
+      if (guessesLeft === 0) {
+        // preventDevault(event)
+      }
       if (firstClick === '') {
-
         click1 = event.target.parentElement
         firstClick = card.children[1].innerHTML
         click1.children[0].style.display = "none"
@@ -168,45 +162,51 @@ function addCardClickEvent(cardEls) {
         secondClick = card.children[1].innerHTML
         click2.children[0].style.display = "none"
         click2.children[1].style.display = "block"
-        // console.log(secondClick)
-        // console.log(click1)
-        console.log(click1.children[0])
-        //
 
         if (firstClick === secondClick) {
+          messageEl.textContent = "Its a match"
           console.log('its a match')
-
           firstClick = ''
           secondClick = ''
+          matches+=1
+          matchCount.innerText = matches
           guessesLeft--
           guessCountDown.innerText = guessesLeft
-        }
-        else {
-          setTimeout(() => {
-            console.log('its not a match')
-            click1.children[0].style.display = "block"
-            click1.children[1].style.display = "none"
-            //event.target.style.display = "none";
-            console.log(click1)
-            click2.children[0].style.display = "block"
-            click2.children[1].style.display = "none"
+        if (matches === 8) {
+            winLoseMessage.textContent = 'YOU WIN!'
+            messageEl.textContent = ''
+          }
 
-            firstClick = ''
-            secondClick = ''
-            guessesLeft--
+        } else {
+          if(guessesLeft === 1) {
+            console.log('loser')
+            guessesLeft = 0
             guessCountDown.innerText = guessesLeft
+            winLoseMessage.textContent = 'YOU LOSE!'
+            messageEl.textContent = ''}
+            else{
+              setTimeout(() => {
+                console.log('its not a match')
+                click1.children[0].style.display = "block"
+                click1.children[1].style.display = "none"
+                //event.target.style.display = "none";
+                console.log(click1)
+                click2.children[0].style.display = "block"
+                click2.children[1].style.display = "none"
 
-          }, 2000)
+                firstClick = ''
+                secondClick = ''
+                guessesLeft--
+                guessCountDown.innerText = guessesLeft
+                messageEl.textContent = "You guessed incorrectly, guess again!"
+              }, 750)
+
+            }
+
 
         }
+
       }
     })
   })
 }
-//function for guess count down
-// function guessCount(){
-
-
-//   guessCountDown.innerHTML = count
-
-// }

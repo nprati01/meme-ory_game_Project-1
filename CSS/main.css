@@ -2,26 +2,47 @@ body {
     background-color: #F0EEED;
 }
 
-h1 {
+#game-title{
 
     font-family: 'M PLUS 1p', sans-serif;
     font-family: 'Rampart One', cursive;
     font-size: 60px;
     color: #332c39;
     text-align: center;
+   
 }
-
-h2 {
-    text-align: end;
+#resultMessage{
+    display:
+}
+#message{
     font-family: 'M PLUS 1p', sans-serif;
     font-family: 'Rampart One', cursive;
-    padding: 20px;
-    margin: 20px;
+    font-size: 50px;
+    text-align: center;
 
 }
-h2 span{
+
+#guess-counter {
+    display: inline;
+    float: right;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    font-size: 30px;
+
+
+}
+.clickCount{
     font-size: 30px;
 }
+#matches-counter{
+    display: inline;
+    float:left;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'Rampart One', cursive;
+    font-size: 30px;
+
+}
+
 p{
     pointer-events: none;
 }
@@ -69,10 +90,10 @@ p{
     justify-content: center;
     position: relative;
     margin:10px;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-style: ridge;
-    border-radius: 45px;
+    border-radius: 30px;
     border-color: #F0EEED;
     border-width: 2vmin;
 
@@ -80,8 +101,8 @@ p{
 
 }
 img{
-    height:300px;
-    width:300px;
+    height:200px;
+    width:200px;
     z-index: -1;
 
 
@@ -115,7 +136,7 @@ img{
     background-image: none;
     color: white;
     text-align: center;
-    
+
     /* backface-visibility: hidden; */
     /* transform: rotateY(180deg); */
     /* background-color: #C92C6D; */
