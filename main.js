@@ -107,6 +107,8 @@ function renderCards() {
     cardsArray.push(faceArray[i].asset)
   for (let i = 0; i < faceArray.length; i++)
     cardsArray.push(faceArray[i].asset)
+
+
   return cardsArray
 
 }
