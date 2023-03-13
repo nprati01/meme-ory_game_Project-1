@@ -8,7 +8,7 @@ If the player makes a match the cards remain flipped face side  up, if they do n
 
 Game play:
 See Game Play folder in Assets
-p1_Memory_Game/assets/game play
+![Memory Game](./assets/game%20play/startgame.png)
 
 Technologies used:
 JavaScript, HTML, CSS, Adobe Illustrator
@@ -23,7 +23,7 @@ Cards will have a flip animation
 Cards will have a shuffle animation
 The board will be hidden until user clicks play game button
 When the game is over the board will be hidden, the win/lose message will display, and the shuffle cards and play again button will display
-Clean up code, so all code isnt within the click event listener 
+Clean up code, so all code isnt within the click event listener
 
 
 
